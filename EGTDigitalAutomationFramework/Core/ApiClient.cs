@@ -1,0 +1,39 @@
+﻿using EGTDigitalAutomationFramework.Models;
+using RestSharp;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EGTDigitalAutomationFramework.Core
+{
+    public sealed class ApiClient
+    {
+        private readonly RestClient _client;
+
+        private ApiClient(string baseUrl)
+        {
+            _client = new RestClient(baseUrl);
+        }
+
+        private static Lazy<ApiClient> _instance = null!;
+
+        public static ApiClient Instance
+        {
+            get
+            {
+                _instance ??= new Lazy<ApiClient>(() => new ApiClient());
+                return _instance.Value;
+            }
+        }
+
+        public async Task<RestResponse> CreateUserAsync(UserData userData)
+        {
+            var req = new RestRequest("/api/users", Method.Post);
+            req.AddJsonBody(userData);
+
+            return await _client.ExecuteAsync(req);
+        }
+    }
+}
