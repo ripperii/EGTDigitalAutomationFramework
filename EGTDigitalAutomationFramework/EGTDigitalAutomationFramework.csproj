@@ -33,8 +33,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\" />
     <Folder Include="Tests\UI\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Configs\appsettings.dev.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Configs\appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Configs\appsettings.test.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

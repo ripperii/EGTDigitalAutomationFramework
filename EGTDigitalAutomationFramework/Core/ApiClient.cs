@@ -1,4 +1,5 @@
-﻿using EGTDigitalAutomationFramework.Models;
+﻿using EGTDigitalAutomationFramework.Configs;
+using EGTDigitalAutomationFramework.Models;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -23,15 +24,16 @@ namespace EGTDigitalAutomationFramework.Core
         {
             get
             {
-                _instance ??= new Lazy<ApiClient>(() => new ApiClient());
+                _instance ??= new Lazy<ApiClient>(() => new ApiClient(FrameworkConfigProvider.Config.ApiUrl));
                 return _instance.Value;
             }
         }
 
-        public async Task<RestResponse> CreateUserAsync(UserData userData)
+        public async Task<RestResponse> CreateUserAsync(UserData userData, string apiKey)
         {
-            var req = new RestRequest("/api/users", Method.Post);
-            req.AddJsonBody(userData);
+            RestRequest req = new RestRequest("/api/users", Method.Post)
+                .AddHeader("x-api-key", apiKey)
+                .AddJsonBody(userData);
 
             return await _client.ExecuteAsync(req);
         }

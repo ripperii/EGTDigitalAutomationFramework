@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EGTDigitalAutomationFramework.Configs
 {
-    public static class FramerworkConfigProvider
+    public static class FrameworkConfigProvider
     {
         private static FrameworkConfig? _config;
 
@@ -18,9 +18,8 @@ namespace EGTDigitalAutomationFramework.Configs
             string environment = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") ?? "dev";
 
             IConfiguration configuration = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("Configs/appsettings.json", optional: false)
-                .AddJsonFile($"Configs/appsettings.{environment}.json", optional: true)
+                .AddJsonFile(Path.Combine(AppContext.BaseDirectory, "Configs", "appsettings.json"), optional: false, reloadOnChange: true)
+                .AddJsonFile(Path.Combine(AppContext.BaseDirectory, "Configs", $"appsettings.{environment}.json"), optional: true, reloadOnChange: true)
                 .Build();
 
             return configuration.Get<FrameworkConfig>();
