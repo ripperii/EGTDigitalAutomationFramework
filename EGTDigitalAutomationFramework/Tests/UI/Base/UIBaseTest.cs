@@ -1,4 +1,6 @@
-﻿using System;
+﻿using log4net;
+using Microsoft.Playwright;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +10,22 @@ namespace EGTDigitalAutomationFramework.Tests.UI.Base
 {
     public abstract class UIBaseTest : IDisposable
     {
+
+        protected readonly ILog Log;
+
+        private readonly string _testName;
+
         protected UIBaseTest()
         {
-            Console.WriteLine("Setup");
+            Log = LogManager.GetLogger(GetType());
+
+            _testName = GetType().Name;
+            Log.Info($"=== START TEST {_testName} ===");
         }
+
         public void Dispose()
         {
-            Console.WriteLine("Tear Down");
+            Log.Info($"=== END TEST {_testName} ===");
         }
     }
 }

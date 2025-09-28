@@ -26,9 +26,8 @@ namespace EGTDigitalAutomationFramework.Tests.API
         [InlineData("Gosho", "QA", "ewqdsa", HttpStatusCode.Forbidden)]
         [AllureDescription("This test verifies that a valid/invalid request for user creation has a successfull expected result.")]
         [AllureSeverity(SeverityLevel.critical)]
-        [AllureTag("Smoke", "Login")]
+        [AllureTag("Smoke", "Create User")]
         [AllureOwner("QA-Team")]
-
         public async Task CreateUser(string? name, string? job, string apiKey, HttpStatusCode expected)
         {
             Console.WriteLine("Create User Test");

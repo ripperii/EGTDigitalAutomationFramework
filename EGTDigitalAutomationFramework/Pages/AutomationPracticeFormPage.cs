@@ -1,4 +1,5 @@
-﻿using Microsoft.Playwright;
+﻿using EGTDigitalAutomationFramework.Configs;
+using Microsoft.Playwright;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,38 +8,21 @@ using System.Threading.Tasks;
 
 namespace EGTDigitalAutomationFramework.Pages
 {
-    public class AutomationPracticeFormPage
+    public class AutomationPracticeFormPage(IPage page)
     {
-        private readonly IPage _page;
-
-        public AutomationPracticeFormPage(IPage page)
-        {
-            _page = page;
-        }
-
-        // URL
-        public string Url => "https://demoqa.com/automation-practice-form";
-
-        // Locators (you can refine selectors as needed)
-        private ILocator FirstNameInput => _page.Locator("#firstName");
-        private ILocator LastNameInput => _page.Locator("#lastName");
-        private ILocator EmailInput => _page.Locator("#userEmail");
-        private ILocator GenderRadio(string gender) => _page.Locator($"//label[text()='{gender}']");
-        private ILocator MobileInput => _page.Locator("#userNumber");
-        private ILocator DateOfBirthInput => _page.Locator("#dateOfBirthInput");
-        private ILocator SubjectsInput => _page.Locator("#subjectsInput");
-        private ILocator HobbiesCheckbox(string hobby) => _page.Locator($"//label[text()='{hobby}']");
-        private ILocator UploadPictureInput => _page.Locator("#uploadPicture");
-        private ILocator CurrentAddressInput => _page.Locator("#currentAddress");
-        private ILocator StateDropdown => _page.Locator("#state");
-        private ILocator CityDropdown => _page.Locator("#city");
-        private ILocator SubmitButton => _page.Locator("#submit");
-
-        public async Task<AutomationPracticeFormPage> NavigateAsync()
-        {
-            await _page.GotoAsync(Url);
-            return this;
-        }
+        private ILocator FirstNameInput => page.Locator("#firstName");
+        private ILocator LastNameInput => page.Locator("#lastName");
+        private ILocator EmailInput => page.Locator("#userEmail");
+        private ILocator GenderRadio(string gender) => page.Locator($"//label[text()='{gender}']");
+        private ILocator MobileInput => page.Locator("#userNumber");
+        private ILocator DateOfBirthInput => page.Locator("#dateOfBirthInput");
+        private ILocator SubjectsInput => page.Locator("#subjectsInput");
+        private ILocator HobbiesCheckbox(string hobby) => page.Locator($"//label[text()='{hobby}']");
+        private ILocator UploadPictureInput => page.Locator("#uploadPicture");
+        private ILocator CurrentAddressInput => page.Locator("#currentAddress");
+        private ILocator StateDropdown => page.Locator("#state");
+        private ILocator CityDropdown => page.Locator("#city");
+        private ILocator SubmitButton => page.Locator("#submit");
 
         public async Task<AutomationPracticeFormPage> FillFirstNameAsync(string firstName)
         {
@@ -85,10 +69,29 @@ namespace EGTDigitalAutomationFramework.Pages
             await SubjectsInput.PressAsync("Enter");
             return this;
         }
+        public async Task<AutomationPracticeFormPage> AddSubjectsAsync(List<string> subjects)
+        {
+            foreach (string subject in subjects)
+            {
+                await SubjectsInput.FillAsync(subject);
+                await page.Locator($"//div[contains(@id, 'react-select') and text() = '{subject}']").ClickAsync();
+            }
+
+            return this;
+        }
 
         public async Task<AutomationPracticeFormPage> SelectHobbyAsync(string hobby)
         {
             await HobbiesCheckbox(hobby).ClickAsync();
+            return this;
+        }
+        public async Task<AutomationPracticeFormPage> SelectHobbiesAsync(List<string> hobbies)
+        {
+            foreach (string hobby in hobbies)
+            {
+                await HobbiesCheckbox(hobby).ClickAsync();
+            }
+
             return this;
         }
 
@@ -107,14 +110,14 @@ namespace EGTDigitalAutomationFramework.Pages
         public async Task<AutomationPracticeFormPage> SelectStateAsync(string state)
         {
             await StateDropdown.ClickAsync();
-            await _page.Locator($"//div[contains(@id, 'react-select') and text() = '{state}']").ClickAsync();
+            await page.Locator($"//div[contains(@id, 'react-select') and text() = '{state}']").ClickAsync();
             return this;
         }
 
         public async Task<AutomationPracticeFormPage> SelectCityAsync(string city)
         {
             await CityDropdown.ClickAsync();
-            await _page.Locator($"//div[contains(@id, 'react-select') and text() = '{city}']").ClickAsync();
+            await page.Locator($"//div[contains(@id, 'react-select') and text() = '{city}']").ClickAsync();
             return this;
         }
 
