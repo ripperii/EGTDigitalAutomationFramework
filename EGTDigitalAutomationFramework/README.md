@@ -139,6 +139,8 @@ export DOTNET_ENVIRONMENT=Test  # macOS/Linux
 
 dotnet test
 ```
+### To Run UI test with specific browser
+In the Configs/appsettings.*.json change the Browser property to the browser on which the tests to run e.g. "Chrome", "Firefox" and "Webkit"
 
 ---
 
@@ -167,10 +169,14 @@ Environment configs are stored in `Configs/appsettings.*.json`. Example:
 
 ```json
 {
-  "Environment": "dev",
-  "BaseUrl": "https://demoqa.com",
-  "ApiBaseUrl": "https://reqres.in/api",
-  "Timeout": 30
+  "Headless": false,
+  "SlowMo": 0,
+  "Browser": "Chrome",
+  "ViewportWidth": 1920,
+  "ViewportHeight": 1080,
+  "BaseUrl": "https://demoqa.com/automation-practice-form",
+  "ApiUrl": "https://reqres.in/",
+  "ApiKey": "reqres-free-v1"
 }
 ```
 
