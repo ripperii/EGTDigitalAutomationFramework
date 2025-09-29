@@ -3,7 +3,7 @@
 [![.NET](https://img.shields.io/badge/.NET-9.0-purple.svg)](https://dotnet.microsoft.com/)  
 [![xUnit](https://img.shields.io/badge/Test-xUnit-orange.svg)](https://xunit.net/)  
 [![Playwright](https://img.shields.io/badge/UI-Playwright-green.svg)](https://playwright.dev/dotnet)  
-[![RestSharp](https://img.shields.io/badge/UI-RestSharp-blue.svg)](https://restsharp.dev/)
+[![RestSharp](https://img.shields.io/badge/API-RestSharp-blue.svg)](https://restsharp.dev/)
 [![Allure](https://img.shields.io/badge/Reports-Allure-blueviolet.svg)](https://docs.qameta.io/allure/)  
 
 ---
