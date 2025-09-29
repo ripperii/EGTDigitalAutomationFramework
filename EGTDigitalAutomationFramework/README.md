@@ -5,6 +5,7 @@
 [![Playwright](https://img.shields.io/badge/UI-Playwright-green.svg)](https://playwright.dev/dotnet)    
 [![RestSharp](https://img.shields.io/badge/API-RestSharp-blue.svg)](https://restsharp.dev/)     
 [![Allure](https://img.shields.io/badge/Reports-Allure-blueviolet.svg)](https://docs.qameta.io/allure/)  
+[![Bogus](https://img.shields.io/badge/Faker-Bogus-red.svg)](https://github.com/bchavez/Bogus)
 
 ---
 
@@ -22,6 +23,7 @@ It unifies **UI automation** (Playwright) and **API testing** with **RestSharp**
 - **Config-driven** test environments (`appsettings.*.json`)  
 - **Parallel execution** supported by xUnit & Playwright fixtures  
 - **Allure Reporting** with logs, and step annotations  
+- **Bogus** faker is used for generating testdata
 - **Logging** with log4net  
 
 ---
