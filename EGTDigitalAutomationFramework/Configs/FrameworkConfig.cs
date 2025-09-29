@@ -14,5 +14,7 @@ namespace EGTDigitalAutomationFramework.Configs
         public required string BaseUrl { get; set; }
         public required string ApiUrl { get; set; }
         public required string ApiKey { get; set; }
+        public required int ViewportWidth { get; set; }
+        public required int ViewportHeight { get; set; }
     }
 }

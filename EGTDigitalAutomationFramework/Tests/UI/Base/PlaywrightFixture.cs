@@ -60,7 +60,11 @@ namespace EGTDigitalAutomationFramework.Tests.UI.Base
                 Log.Info("Webkit browser launched.");
             }
 
-                BrowserContext = await Browser.NewContextAsync();
+            BrowserContext = await Browser.NewContextAsync(new BrowserNewContextOptions
+            {
+                ViewportSize = new ViewportSize { Width = FrameworkConfigProvider.Config.ViewportWidth, Height = FrameworkConfigProvider.Config.ViewportHeight }
+            });
+            
             Page = await BrowserContext.NewPageAsync();
 
             PageFactory = new PageFactory(Page);

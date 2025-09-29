@@ -1,4 +1,5 @@
-﻿using EGTDigitalAutomationFramework.Models;
+﻿using Allure.Xunit.Attributes.Steps;
+using EGTDigitalAutomationFramework.Models;
 using EGTDigitalAutomationFramework.Pages;
 using FluentAssertions;
 using System;
@@ -33,5 +34,20 @@ namespace EGTDigitalAutomationFramework.Tests.UI
                 tablePage.GetStateAndCity().Result.Should().Be(expected.State + " " + expected.City);
             }
         }
+        public static void AssertInvalidData(AutomationPracticeFormPage formPage)
+        {
+            using (new FluentAssertions.Execution.AssertionScope())
+            {
+                formPage.ValidateFirstNameRequiredAsync().Result.Should().BeTrue();
+                formPage.ValidateLastNameRequiredAsync().Result.Should().BeTrue();
+                formPage.ValidateEmailIsCorrectAsync().Result.Should().BeTrue();
+                formPage.ValidateMobileNumberRequiredAsync().Result.Should().BeTrue();
+                formPage.ValidateGenderRequiredAsync("Male").Result.Should().BeTrue();
+                formPage.ValidateGenderRequiredAsync("Female").Result.Should().BeTrue();
+                formPage.ValidateGenderRequiredAsync("Other").Result.Should().BeTrue();
+
+            }
+        }
+
     }
 }

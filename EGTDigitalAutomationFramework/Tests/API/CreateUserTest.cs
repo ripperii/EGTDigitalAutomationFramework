@@ -1,5 +1,6 @@
 ﻿using Allure.Net.Commons;
 using Allure.Xunit.Attributes;
+using Allure.Xunit.Attributes.Steps;
 using EGTDigitalAutomationFramework.Configs;
 using EGTDigitalAutomationFramework.Core;
 using EGTDigitalAutomationFramework.Models;
@@ -28,6 +29,7 @@ namespace EGTDigitalAutomationFramework.Tests.API
         [AllureSeverity(SeverityLevel.critical)]
         [AllureTag("Smoke", "Create User")]
         [AllureOwner("QA-Team")]
+        [AllureStep("Send Request for User creation with Name: {0} Job: {1} API Key:{2} and expect status code: {3}")]
         public async Task CreateUser(string? name, string? job, string apiKey, HttpStatusCode expected)
         {
             Console.WriteLine("Create User Test");

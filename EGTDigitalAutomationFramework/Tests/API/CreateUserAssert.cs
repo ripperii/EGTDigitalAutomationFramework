@@ -1,4 +1,5 @@
-﻿using EGTDigitalAutomationFramework.Models;
+﻿using Allure.Xunit.Attributes.Steps;
+using EGTDigitalAutomationFramework.Models;
 using Newtonsoft.Json;
 using RestSharp;
 using System;
@@ -12,6 +13,7 @@ namespace EGTDigitalAutomationFramework.Tests.API
 {
     internal static class CreateUserAssert
     {
+        [AllureStep("Asserting Create User response data")]
         public static void AssertCreateUser(string? name, string? job, HttpStatusCode expected, RestResponse res)
         {
             Assert.Equal(expected, res.StatusCode);
