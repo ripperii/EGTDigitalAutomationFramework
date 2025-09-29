@@ -29,7 +29,7 @@ namespace EGTDigitalAutomationFramework.Tests.API
         [AllureSeverity(SeverityLevel.critical)]
         [AllureTag("Smoke", "Create User")]
         [AllureOwner("QA-Team")]
-        [AllureStep("Send Request for User creation with Name: {0} Job: {1} API Key:{2} and expect status code: {3}")]
+        [AllureStep("Send Request for User creation with Name: {name} Job: {job} API Key:{apiKey} and expect status code: {expected}")]
         public async Task CreateUser(string? name, string? job, string apiKey, HttpStatusCode expected)
         {
             Console.WriteLine("Create User Test");

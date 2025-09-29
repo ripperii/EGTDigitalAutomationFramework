@@ -26,42 +26,42 @@ namespace EGTDigitalAutomationFramework.Pages
         private ILocator CityDropdown => page.Locator("#city");
         private ILocator SubmitButton => page.Locator("#submit");
 
-        [AllureStep("Fill First Name with value: {0}")]
+        [AllureStep("Fill First Name with value: {firstName}")]
         public async Task<AutomationPracticeFormPage> FillFirstNameAsync(string firstName)
         {
             await FirstNameInput.FillAsync(firstName);
             return this;
         }
 
-        [AllureStep("Fill Last Name with value: {0}")]
+        [AllureStep("Fill Last Name with value: {lastName}")]
         public async Task<AutomationPracticeFormPage> FillLastNameAsync(string lastName)
         {
             await LastNameInput.FillAsync(lastName);
             return this;
         }
 
-        [AllureStep("Fill Email with value: {0}")]
+        [AllureStep("Fill Email with value: {email}")]
         public async Task<AutomationPracticeFormPage> FillEmailAsync(string email)
         {
             await EmailInput.FillAsync(email);
             return this;
         }
 
-        [AllureStep("Select Gender with value: {0}")]
+        [AllureStep("Select Gender with value: {gender}")]
         public async Task<AutomationPracticeFormPage> SelectGenderAsync(string gender)
         {
             await GenderRadio(gender).ClickAsync();
             return this;
         }
 
-        [AllureStep("Fill Mobile with value: {0}")]
+        [AllureStep("Fill Mobile with value: {mobile}")]
         public async Task<AutomationPracticeFormPage> FillMobileAsync(string mobile)
         {
             await MobileInput.FillAsync(mobile);
             return this;
         }
 
-        [AllureStep("Set Date of Birth to value: {0}")]
+        [AllureStep("Set Date of Birth to value: {dateText}")]
         public async Task<AutomationPracticeFormPage> SetDateOfBirthAsync(string dateText /* e.g. "15 May 1990" or "15-05-1990" depending on widget */)
         {
             await DateOfBirthInput.ClickAsync();
@@ -71,7 +71,7 @@ namespace EGTDigitalAutomationFramework.Pages
             return this;
         }
 
-        [AllureStep("Add Subject: {0}")]
+        [AllureStep("Add Subject: {subject}")]
         public async Task<AutomationPracticeFormPage> AddSubjectAsync(string subject)
         {
             await SubjectsInput.FillAsync(subject);
@@ -79,7 +79,7 @@ namespace EGTDigitalAutomationFramework.Pages
             return this;
         }
 
-        [AllureStep("Add subjects: {0}")]
+        [AllureStep("Add subjects: {subjects}")]
         public async Task<AutomationPracticeFormPage> AddSubjectsAsync(List<string> subjects)
         {
             foreach (string subject in subjects)
@@ -91,14 +91,14 @@ namespace EGTDigitalAutomationFramework.Pages
             return this;
         }
 
-        [AllureStep("Select Hobby: {0}")]
+        [AllureStep("Select Hobby: {hobby}")]
         public async Task<AutomationPracticeFormPage> SelectHobbyAsync(string hobby)
         {
             await HobbiesCheckbox(hobby).ClickAsync();
             return this;
         }
 
-        [AllureStep("Select Hobbies: {0}")]
+        [AllureStep("Select Hobbies: {hobbies}")]
         public async Task<AutomationPracticeFormPage> SelectHobbiesAsync(List<string> hobbies)
         {
             foreach (string hobby in hobbies)
@@ -108,20 +108,20 @@ namespace EGTDigitalAutomationFramework.Pages
 
             return this;
         }
-        [AllureStep("Upload Picture: {0}")]
+        [AllureStep("Upload Picture: {filePath}")]
         public async Task<AutomationPracticeFormPage> UploadPictureAsync(string filePath)
         {
             await UploadPictureInput.SetInputFilesAsync(filePath);
             return this;
         }
-        [AllureStep("Fill Current Address with value: {0}")]
+        [AllureStep("Fill Current Address with value: {address}")]
         public async Task<AutomationPracticeFormPage> FillCurrentAddressAsync(string address)
         {
             await CurrentAddressInput.FillAsync(address);
             return this;
         }
 
-        [AllureStep("Select State: {0}")]
+        [AllureStep("Select State: {state}")]
         public async Task<AutomationPracticeFormPage> SelectStateAsync(string state)
         {
             await StateDropdown.ClickAsync();
@@ -129,7 +129,7 @@ namespace EGTDigitalAutomationFramework.Pages
             return this;
         }
 
-        [AllureStep("Select City: {0}")]
+        [AllureStep("Select City: {city}")]
         public async Task<AutomationPracticeFormPage> SelectCityAsync(string city)
         {
             await CityDropdown.ClickAsync();
