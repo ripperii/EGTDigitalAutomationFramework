@@ -11,7 +11,7 @@
 ## 📖 Overview
 
 The **EGT Digital Automation Framework** is a modular and extensible **C# test automation framework** targeting **.NET 9.0**.  
-It unifies **UI automation** (Playwright) and **API testing** with **xUnit**, providing a maintainable foundation for quality assurance.
+It unifies **UI automation** (Playwright) and **API testing** with **RestSharp** in **xUnit**, providing a maintainable foundation for quality assurance.
 
 ---
 
@@ -21,9 +21,8 @@ It unifies **UI automation** (Playwright) and **API testing** with **xUnit**, pr
 - **API Testing** with reusable clients and models  
 - **Config-driven** test environments (`appsettings.*.json`)  
 - **Parallel execution** supported by xUnit & Playwright fixtures  
-- **Allure Reporting** with screenshots, logs, and step annotations  
+- **Allure Reporting** with logs, and step annotations  
 - **Logging** with log4net  
-- **CI/CD ready** (GitHub Actions / Jenkins / Azure DevOps)
 
 ---
 
