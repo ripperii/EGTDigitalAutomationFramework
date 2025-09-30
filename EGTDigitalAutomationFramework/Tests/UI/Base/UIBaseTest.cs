@@ -2,8 +2,11 @@
 using EGTDigitalAutomationFramework.Configs;
 using EGTDigitalAutomationFramework.Core;
 using log4net;
+using log4net.Appender;
 using log4net.Config;
+using log4net.Layout;
 using log4net.Repository;
+using log4net.Repository.Hierarchy;
 using Microsoft.Playwright;
 using System;
 using System.Collections.Generic;
@@ -32,11 +35,12 @@ namespace EGTDigitalAutomationFramework.Tests.UI.Base
             _testName = GetType().Name;
             ILoggerRepository logRepository = LogManager.GetRepository(Assembly.GetEntryAssembly() ?? Assembly.GetExecutingAssembly());
             XmlConfigurator.Configure(logRepository, new FileInfo("log4net.config"));
-            Log = LogManager.GetLogger(GetType());
+            Log = LogManager.GetLogger(typeof(UIBaseTest));
         }
 
         public async Task InitializeAsync()
         {
+
             Log.Info("=== Test Run Setup Started ===");
 
             Playwright = await Microsoft.Playwright.Playwright.CreateAsync();

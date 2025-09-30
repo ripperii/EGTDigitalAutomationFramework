@@ -32,7 +32,6 @@ namespace EGTDigitalAutomationFramework.Tests.API
         [AllureStep("Send Request for User creation with Name: {name} Job: {job} API Key:{apiKey} and expect status code: {expected}")]
         public async Task CreateUser(string? name, string? job, string apiKey, HttpStatusCode expected)
         {
-            Console.WriteLine("Create User Test");
 
             RestResponse res = await ApiClient.Instance.CreateUserAsync(new UserData()
             {

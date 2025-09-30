@@ -22,7 +22,7 @@ It unifies **UI automation** (Playwright) and **API testing** with **RestSharp**
 - **API Testing** with reusable clients and models  
 - **Config-driven** test environments (`appsettings.*.json`)  
 - **Parallel execution** supported by xUnit & Playwright fixtures  
-- **Allure Reporting** with logs, and step annotations  
+- **Allure Reporting** with logs, traces and step annotations  
 - **Bogus** faker is used for generating testdata
 - **Logging** with log4net  
 
