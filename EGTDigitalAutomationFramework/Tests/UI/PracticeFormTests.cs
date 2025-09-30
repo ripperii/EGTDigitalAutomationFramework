@@ -18,9 +18,25 @@ namespace EGTDigitalAutomationFramework.Tests.UI
 {
     public class PracticeFormTests : UIBaseTest
     {
-        public static TheoryData<TestFormData> FormTestData = FormTestDataGenerator.Generate(2);
+        public static TheoryData<TestFormData> FormFakeTestData = FormTestDataGenerator.Generate(2);
+
+        public static TheoryData<TestFormData> FormTestData = [
+        new TestFormData(){
+            FirstName = "Ivan",
+            LastName = "Petrov",
+            Email = "ivan.petrov@example.com",
+            Gender = "Male",
+            Mobile = "0888123456",
+            BirthDate = "01 Jan 1990",
+            Subjects = ["Maths"],
+            Hobbies = ["Sports", "Reading"],
+            CurrentAddress = "123 Test Street",
+            State = "NCR",
+            City = "Delhi"
+        }];
 
         [Theory(DisplayName = "Filling and submitting registration form")]
+        [MemberData(nameof(FormFakeTestData))]
         [MemberData(nameof(FormTestData))]
         [AllureDescription("This test verifies that filling in all data in the form is correctly displayed in the Result table")]
         [AllureSeverity(SeverityLevel.critical)]
