@@ -1,4 +1,4 @@
-﻿using log4net;
+using log4net;
 using Microsoft.Playwright;
 using System;
 using System.Collections.Generic;
@@ -20,6 +20,10 @@ namespace EGTDigitalAutomationFramework.Tests.UI.Base
             Log = LogManager.GetLogger(GetType());
 
             _testName = GetType().Name;
+
+            Log.Info("=== STAR TRACE ===");
+
+await 
             Log.Info($"=== START TEST {_testName} ===");
         }
 
