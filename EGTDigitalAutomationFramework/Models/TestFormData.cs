@@ -8,16 +8,16 @@ namespace EGTDigitalAutomationFramework.Models
 {
     public class TestFormData
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Gender { get; set; }
-        public string Mobile { get; set; }
-        public string BirthDate { get; set; }
-        public List<string> Subjects { get; set; }
-        public List<string> Hobbies { get; set; }
-        public string CurrentAddress { get; set; }
-        public string State { get; set; }
-        public string City { get; set; }
+        public required string FirstName { get; set; }
+        public required string LastName { get; set; }
+        public required string Email { get; set; }
+        public required string Gender { get; set; }
+        public required string Mobile { get; set; }
+        public required string BirthDate { get; set; }
+        public required List<string> Subjects { get; set; }
+        public required List<string> Hobbies { get; set; }
+        public required string CurrentAddress { get; set; }
+        public required string State { get; set; }
+        public required string City { get; set; }
     }
 }

@@ -3,7 +3,6 @@ using Allure.Xunit.Attributes;
 using EGTDigitalAutomationFramework.Configs;
 using EGTDigitalAutomationFramework.Models;
 using EGTDigitalAutomationFramework.Pages;
-using EGTDigitalAutomationFramework.Tests.UI.Base;
 using EGTDigitalAutomationFramework.Utilities;
 using static Microsoft.Playwright.Assertions;
 using System;
@@ -13,14 +12,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using Allure.Xunit.Attributes.Steps;
+using EGTDigitalAutomationFramework.Tests.UI.Base;
 
 namespace EGTDigitalAutomationFramework.Tests.UI
 {
-    [Collection("Playwright collection")]
-    public class PracticeFormTests(PlaywrightFixture fixture) : UIBaseTest
+    public class PracticeFormTests : UIBaseTest
     {
-        private readonly PlaywrightFixture _fixture = fixture;
-
         public static TheoryData<TestFormData> FormTestData = FormTestDataGenerator.Generate(2);
 
         [Theory(DisplayName = "Filling and submitting registration form")]
@@ -33,9 +30,9 @@ namespace EGTDigitalAutomationFramework.Tests.UI
         {
             Log.Info("Navigating to Automation Practice Form");
 
-            await _fixture.Page.GotoAsync(FrameworkConfigProvider.Config.BaseUrl);
+            await Page.GotoAsync(FrameworkConfigProvider.Config.BaseUrl);
 
-            AutomationPracticeFormPage formPage = _fixture.PageFactory.FormPage;
+            AutomationPracticeFormPage formPage = PageFactory.FormPage;
 
             Log.Info("Filling input fields in the Form");
 
@@ -57,7 +54,7 @@ namespace EGTDigitalAutomationFramework.Tests.UI
 
             Log.Info("Asserting Result Table's contents");
 
-            SubmitedDataTablePage table = _fixture.PageFactory.SubmitedDataTablePage;
+            SubmitedDataTablePage table = PageFactory.SubmitedDataTablePage;
 
             PracticeFormAssertions.AssertSubmitedData(data, table);
 
@@ -80,9 +77,9 @@ namespace EGTDigitalAutomationFramework.Tests.UI
         {
             Log.Info("Navigating to Automation Practice Form");
 
-            await _fixture.Page.GotoAsync(FrameworkConfigProvider.Config.BaseUrl);
+            await Page.GotoAsync(FrameworkConfigProvider.Config.BaseUrl);
 
-            AutomationPracticeFormPage formPage = _fixture.PageFactory.FormPage;
+            AutomationPracticeFormPage formPage = PageFactory.FormPage;
 
             Log.Info("Filling input fields in the Form");
 
@@ -104,7 +101,7 @@ namespace EGTDigitalAutomationFramework.Tests.UI
 
             Log.Info("Asserting that the Result Table's modal panel is closed");
 
-            await Expect(_fixture.PageFactory.SubmitedDataTablePage.ResultsModal).Not.ToBeVisibleAsync();
+            await Expect(PageFactory.SubmitedDataTablePage.ResultsModal).Not.ToBeVisibleAsync();
         }
     }
 }
